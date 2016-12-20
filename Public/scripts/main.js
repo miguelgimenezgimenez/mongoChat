@@ -4,7 +4,7 @@ function renderQuote (content, timestamp,user, dontstore) {
 
   let msgDiv = $('<div>');
   msgDiv.addClass('messageBubble');
-
+  console.log(user);
   if (user === 'user') {
     msgDiv.addClass('user');
   }
@@ -45,7 +45,7 @@ function getStoredMessages () {
     for (var i in msgArray) {
       console.log(msgArray);
       const msg =msgArray[i];
-      renderQuote(msg.content, msg.timestamp, msg.user,true);
+      renderQuote(msg.content, msg.timestamp, msg.userName,true);
     }
   }
 }
@@ -69,7 +69,6 @@ $(document).ready(function () {
     let time = moment().format('lll');
     renderQuote(content, time, 'user');
     textbox.val('');
-
     setTimeout(function () {
       getQuote();
     }, 1500);
